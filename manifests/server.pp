@@ -26,10 +26,10 @@ class openldap::server(
   validate_hash($databases)
 
   class { '::openldap::server::install': }
+  -> class { '::openldap::server::slapdconf': }
   -> class { '::openldap::server::config': }
   ~> class { '::openldap::server::service': }
 
-  class { '::openldap::server::slapdconf': }
 
   case $provider {
     'augeas': {
