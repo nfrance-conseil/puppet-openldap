@@ -45,7 +45,6 @@ define openldap::server::database(
   } else {
     Class['openldap::server::service']
     -> Openldap::Server::Database[$title]
-    -> Class['openldap::server']
   }
   if $title != 'dc=my-domain,dc=com' {
     Openldap::Server::Database['dc=my-domain,dc=com'] -> Openldap::Server::Database[$title]
